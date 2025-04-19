@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taqreeb - Understand the Quran, One Word at a Time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F5EFE0;
+            --text-color: #3A2921;
+            --primary-color: #8B5A2B;
+            --secondary-color: #D2B48C;
+            --gradient-start: #D2B48C;
+            --gradient-end: #8B5A2B;
+            --section-spacing: 4rem;
+            --container-width: 1200px;
+            --accent-color: #A67C52;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+            position: relative;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Islamic Pattern Divider */
+        .pattern-divider {
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cpath fill='%238B5A2B' fill-opacity='0.15' d='M0 40a19.96 19.96 0 0 1 5.9-14.11 20.17 20.17 0 0 1 19.44-5.2A20 20 0 0 1 20.2 40H0zM65.32.75A20.02 20.02 0 0 1 40.8 25.26 20.02 20.02 0 0 1 65.32.76zM.07 0h20.1l-.08.07A20.02 20.02 0 0 1 .75 5.25 20.08 20.08 0 0 1 .07 0zm1.94 40h2.53l4.26-4.24v-9.78A17.96 17.96 0 0 0 2 40zm5.38 0h9.8a17.98 17.98 0 0 0 6.67-16.42L7.4 40zm3.43-15.42v9.17l11.62-11.59c-3.97-.5-8.08.3-11.62 2.42zm32.86-.78A18 18 0 0 0 63.85 3.63L43.68 23.8zm7.2-19.17v9.15L62.43 2.22c-3.96-.5-8.05.3-11.57 2.4zm-3.49 2.72c-4.1 4.1-5.81 9.69-5.13 15.03l6.61-6.6V6.02c-.51.41-1 .85-1.48 1.33zM17.18 0H7.42L3.64 3.78A18 18 0 0 0 17.18 0zM2.08 0c-.01.8.04 1.58.14 2.37L4.59 0H2.07z'%3E%3C/path%3E%3C/svg%3E");
+            margin: 0;
+            opacity: 0.5;
+        }
+        
+        /* Arabic Calligraphy Elements */
+        .calligraphy-divider {
+            height: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='50' viewBox='0 0 800 50'%3E%3Ctext x='400' y='35' font-family='Arial' font-size='30' text-anchor='middle' fill='%238B5A2B' fill-opacity='0.2'%3Eبسم الله الرحمن الرحيم%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 1rem 0;
+        }
+
+        .calligraphy-background {
+            position: relative;
+        }
+
+        .calligraphy-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-family='Arial' font-size='80' text-anchor='middle' fill='%238B5A2B' fill-opacity='0.03' transform='rotate(-45, 100, 100)'%3Eعلم%3C/text%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-calligraphy {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='60' viewBox='0 0 800 60'%3E%3Ctext x='400' y='40' font-family='Arial' font-size='30' text-anchor='middle' fill='white' fill-opacity='0.2'%3Eاقرأ باسم ربك الذي خلق%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .section-title h2::before {
+            content: "❖";
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            opacity: 0.7;
+        }
+
+        .feature-icon {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-icon::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: 60% 60%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+        }
+
+        .feature-icon:nth-child(1)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='70' font-family='Arial' font-size='60' text-anchor='middle' fill='white'%3Eأ%3C/text%3E%3C/svg%3E");
+        }
+
+        .arabic-decoration {
+            text-align: center;
+            margin: 2rem 0;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='40' viewBox='0 0 600 40'%3E%3Cpath d='M20,20 C60,5 140,35 200,20 S340,0 400,20 S540,40 580,20' stroke='%238B5A2B' stroke-width='2' fill='none' stroke-opacity='0.3'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .email-signup::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='20' viewBox='0 0 400 20'%3E%3Ctext x='200' y='15' font-family='Arial' font-size='12' text-anchor='middle' fill='%238B5A2B' fill-opacity='0.3'%3Eالعلم نور%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .footer-calligraphy {
+            margin: 1rem 0;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='40' viewBox='0 0 600 40'%3E%3Ctext x='300' y='30' font-family='Arial' font-size='20' text-anchor='middle' fill='white' fill-opacity='0.4'%3Eطلب العلم فريضة على كل مسلم%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .audience::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='70' font-family='Arial' font-size='70' text-anchor='middle' fill='%238B5A2B' fill-opacity='0.1'%3Eق%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .download::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='70' font-family='Arial' font-size='70' text-anchor='middle' fill='%238B5A2B' fill-opacity='0.1'%3Eع%3C/text%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        
+        /* Header/Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 5rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .hero h1::after {
+            content: "تقريب";
+            display: block;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .hero p.tagline {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p.description {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .hero-decoration {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23F5EFE0'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: white;
+            position: relative;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            border: 1px solid rgba(139, 90, 43, 0.1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
+        }
+        
+        .feature-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-icon::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .feature-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        /* Audience Section */
+        .audience {
+            background-color: var(--bg-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .audience::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238B5A2B' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .audience .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .audience p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            background-color: rgba(245, 239, 224, 0.8);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
+            border: 1px solid rgba(139, 90, 43, 0.1);
+        }
+        
+        /* Download Section */
+        .download {
+            background-color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .download::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238B5A2B' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .app-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .app-badge {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+        
+        .app-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .email-signup {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
+        }
+        
+        .email-signup::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='10' viewBox='0 0 100 10'%3E%3Cpath fill='%238B5A2B' d='M0 10 L25 0 L50 10 L75 0 L100 10 Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            opacity: 0.2;
+        }
+        
+        .email-signup p {
+            margin-bottom: 1rem;
+        }
+        
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .email-input {
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            border: 1px solid var(--secondary-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background-color: white;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(139, 90, 43, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        footer .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            position: relative;
+        }
+        
+        footer a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        footer a:hover::after {
+            width: 100%;
+        }
+        
+        .footer-links {
+            margin-top: 1rem;
+        }
+        
+        .islamic-decoration {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .islamic-decoration::before,
+        .islamic-decoration::after {
+            content: "۞";
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        /* Media Queries */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .email-form {
+                flex-direction: row;
+            }
+            
+            .email-input {
+                flex: 1;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .hero {
+                padding: 7rem 0 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Taqreeb</h1>
+            <p class="tagline">Understand the Quran, One Word at a Time</p>
+            <p class="description">
+                Taqreeb helps you learn Quranic Arabic vocabulary through an intuitive, step-by-step approach. 
+                With just 500 words, you'll understand 80% of the Quran's vocabulary, making your journey to 
+                comprehension faster and more meaningful.
+            </p>
+            <a href="#download" class="btn">Get Started</a>
+        </div>
+        <div class="hero-calligraphy"></div>
+        <div class="hero-decoration"></div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Features</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">1</div>
+                    <h3>500 Most Frequent Words</h3>
+                    <p>Focus on the most common Quranic vocabulary for maximum impact on your understanding.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">2</div>
+                    <h3>Contextual Verse Examples</h3>
+                    <p>Learn words in the context of actual Quranic verses for better retention and understanding.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">3</div>
+                    <h3>Mini Quizzes & Audio</h3>
+                    <p>Reinforce your learning with interactive quizzes and authentic pronunciation audio.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">4</div>
+                    <h3>Progress Tracker</h3>
+                    <p>Stay motivated with streaks and detailed progress tracking of your learning journey.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">5</div>
+                    <h3>Arabic + English Support</h3>
+                    <p>Full bilingual support for both Arabic and English speakers at any proficiency level.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="calligraphy-divider"></div>
+
+    <!-- Audience Section -->
+    <section class="audience calligraphy-background" id="audience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Who Is It For?</h2>
+            </div>
+            <p>
+                Taqreeb is designed for anyone seeking to understand the Quran in its original language. Whether you're a student 
+                beginning your Arabic journey, a parent wanting to teach your children, or a busy professional with limited study time, 
+                Taqreeb's efficient approach helps you make meaningful progress in understanding the Quran, regardless of your current 
+                level of Arabic knowledge.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Contact: support@taqreebapp.com</p>
+            <div class="footer-calligraphy"></div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
